@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Team Organogram Design</title>
+      <link rel="stylesheet" href="style.css">
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+   </head>
+   <body>
+     
+      <div class="main" id="mainDiv">
+         <ul class="organogram">
+            <li id='dept-1' class='team'>
+               <div class='data'>
+                  <ul>
+                     <li class='title' onclick='thisNode(this)'>
+                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa9UI1y4Shr253ibETjPCOWNBWWpKgQsVKaw&usqp=CAU' class='profile' >
+                        <div class='details'>
+                           <p class="name">Team Leader</p>
+                           <p class="designation">CEO</p>
+                        </div>
+                     </li>
+                     
+                  </ul>
+               </div>
+            </li>
+         </ul>
+      </div>
+      <script>
+ function childData(_id) {
+     var tRow = $(".organogram li").length,
+      row = parseInt(_id)+1;
+     for (var i = row; i <= tRow; i++) {
+         $("#dept-"+i).remove();
+     }
+     var data =  "<li id='dept-"+row+"' class='team'>"
+ 
+     +"<div class='data'><ul> "
+     +"<li class='title' onclick='thisNode(this)'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXp3DxP80ArpRzsB0XWBG9Ow5GeuefbLrUHw&usqp=CAU' class='profile' ><div class='details'> <p class='name'>Tusher</p><p class='designation'>Marketing Head</p></div></li>"
+     +"<li class='title' onclick='thisNode(this)'><img src='https://arnejaheartinstitute.com/wp-content/uploads/2019/03/img_avatar2.png' class='profile' ><div class='details'> <p class='name'>Jenelia D.</p><p class='designation'>Designer</p></div></li>"
+     +"<li class='title' onclick='thisNode(this)'><img src='https://cdn2.f-cdn.com/contestentries/1316431/24595406/5ae8a3f2e4e98_thumb900.jpg' class='profile' ><div class='details'> <p class='name'>Peter Parker</p><p class='designation'>Designation</p></div></li>"
+     +"</ul> </div></li>";
+     $(".organogram").append(data);
+      document.getElementById("dept-"+row).scrollIntoView();
+ }
+ function thisNode(_this){
+     var _id = $(_this).closest(".team").attr("id").match(/\d+/);
+        
+     $(_this).closest("ul").find("li").removeClass( "active" );
+     $(_this).addClass( "active" );
+
+
+ $(_this).closest("ul").prepend($(_this));
+     childData(_id);
+ }  
+      </script>
+   </body>
+</html>
